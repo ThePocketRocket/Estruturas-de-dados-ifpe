@@ -11,6 +11,22 @@ public class Lista<T> {
         this.ref = no;
     }
 
+    public void remover(T valor) {
+        if (ref != null) {
+            if (ref.getValor().equals(valor)) {
+                ref = ref.getProx();
+                return;
+            }
+
+            for (No<T> aux = ref; aux.getProx() != null; aux = aux.getProx()) {
+                if (aux.getProx().getValor().equals(valor)) {
+                    aux.setProx(aux.getProx().getProx());
+                    return;
+                }
+            }
+        }
+    }
+
     public void imprimir() {
         if (ref == null) {
             System.out.println("Lista Vazia.");
